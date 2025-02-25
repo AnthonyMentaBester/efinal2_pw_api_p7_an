@@ -36,11 +36,6 @@ public class IProductoServiceImpl implements IProductoService {
 
     @Override
     public void ingresarProducto(ProductoTo productoTo) { 
-        ProductoTo p = this.buscarProducto(productoTo.getCodigoBarras());
-        if(p != null){
-            productoTo.setStock(productoTo.getStock() + p.getStock());
-            throw new RuntimeException("El producto ya existe");
-        }
         this.iProductoRepository.ingresarProducto(mapP.apply(productoTo));
     }
 
